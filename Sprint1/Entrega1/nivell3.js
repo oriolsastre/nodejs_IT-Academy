@@ -13,5 +13,4 @@ arrayDeFuncions.forEach(element => {
 // Exercici 2
 // Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari/ària a rebut com a paràmetre.
 
-var funAnoAuto = function(nom){console.log(nom);}
-funAnoAuto("Oriol");
+var funAnoAuto = (function(nom){console.log(nom);})("Oriol");
