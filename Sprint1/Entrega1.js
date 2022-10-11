@@ -1,5 +1,6 @@
 /* Nivell 1 */
 // Exercici 1
+// Crea una funció que mostri per consola el nom d'usuari/ària en invocar-la passant-li el nom com a paràmetre.
 
 function mostrarNom(nom){
     console.log(nom);
@@ -17,10 +18,10 @@ console.log(`El nom complet d'aquest usuari és ${nom} ${cognoms}.`);
 // Exercici 2
 // Invoca una funció que retorni un valor des de dins d'una template literal.
 
-function mostrarNom(nom, cognoms){
+function mostrarNom2(nom, cognoms){
     return nom + ' de nom i ' + cognoms + ' de primer i segon cognoms.';
 }
-console.log(`Aquest usuari es diu ${mostrarNom('Oriol', 'Sastre Rienitz')}`);
+console.log(`Aquest usuari es diu ${mostrarNom2('Oriol', 'Sastre Rienitz')}`); //No se'm demana mostrar-ho per consola, però per comprovar que funciona.
 
 /* Nivell 3 */
 // Exercici 1
@@ -38,4 +39,4 @@ arrayDeFuncions.forEach(element => {
 // Exercici 2
 // Crea una funció anònima autoinvocable igualada a una variable que mostri per consola el nom de l'usuari/ària a rebut com a paràmetre.
 
-var funAnoAuto = (function(nom){console.log(nom);})("Oriol");
+var funcAnonAuto = (function(nom){console.log(nom);})("Oriol");
