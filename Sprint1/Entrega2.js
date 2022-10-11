@@ -8,7 +8,13 @@ console.log( ( (a,b) => a+b )(1,2) );
 // Exercici 1
 // Crea una arrow function que, rebent un paràmetre, retorni un objecte amb un atribut que tingui com a valor el paràmetre rebut.
 
-var moble = {};
+let ferMoble = (material) => {
+    var moble = {material: material}
+    return moble;
+}
+
+var cadira = ferMoble("fusta");
+console.log(cadira.material); //Mostrant en consola per comprovar que funciona.
 
 // Exercici 2
 /* Crea una classe "Persona" que rebi un paràmetre 'nom' en ser instanciada. La classe inclourà un mètode dirNom que imprimeixi per consola el paràmetre 'nom'.
@@ -29,3 +35,9 @@ jo.dirNom();
 /* Nivell 3 */
 // Exercici 1
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
+
+
+
+function crearObjecte(tipus) {
+    
+}
