@@ -35,9 +35,14 @@ jo.dirNom();
 /* Nivell 3 */
 // Exercici 1
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
+class Moble{
+    constructor(){}
+}
 
 
-
-function crearObjecte(tipus) {
-    
+function crearMoble(numPotes) {
+    if(numPotes<=0){console.log("Un moble necessita un nombre de potes");}
+    elseif(numPotes==1){
+        //var Lampada extends Moble{}
+    }
 }
