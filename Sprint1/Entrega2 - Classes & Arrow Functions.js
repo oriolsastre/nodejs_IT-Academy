@@ -8,7 +8,7 @@ console.log( ( (a,b) => a+b )(1,2) );
 // Exercici 1
 // Crea una arrow function que, rebent un paràmetre, retorni un objecte amb un atribut que tingui com a valor el paràmetre rebut.
 
-ferMoble = (material) => {
+ferMoble = material => {
     var moble = {material: material}
     return moble;
 }
