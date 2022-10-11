@@ -8,7 +8,7 @@ console.log( ( (a,b) => a+b )(1,2) );
 // Exercici 1
 // Crea una arrow function que, rebent un paràmetre, retorni un objecte amb un atribut que tingui com a valor el paràmetre rebut.
 
-let ferMoble = (material) => {
+ferMoble = (material) => {
     var moble = {material: material}
     return moble;
 }
@@ -37,12 +37,55 @@ jo.dirNom();
 // Escriu una function creadora d'objectes que faci instàncies d'una classe abstracta. Invoca-la amb diferents definicions.
 class Moble{
     constructor(){}
+    faig(){}
+}
+class Lampada extends Moble{
+    constructor(potes){
+        super();
+        this.potes=potes;
+        this.nom = "Lampada";
+    }
+    faig(){
+        console.log(`Soc una ${this.nom}, tinc ${this.potes} pota i faig llum.`);
+    }
+}
+
+class Cadira extends Moble{
+    constructor(potes){
+        super();
+        this.potes=potes;
+        this.nom = "Cadira";
+    }
+    faig(){
+        console.log(`Soc una ${this.nom}, tinc ${this.potes} potes i la gent hi pot seure.`);
+    }
+}
+
+class Taula extends Moble{
+    constructor(potes){
+        super();
+        this.potes=potes;
+        this.nom = "Taula";
+    }
+    faig(){
+        console.log(`Soc una ${this.nom}, tinc ${this.potes} potes i la gent hi posa objectes.`);
+    }
 }
 
 
 function crearMoble(numPotes) {
-    if(numPotes<=0){console.log("Un moble necessita un nombre de potes");}
-    elseif(numPotes==1){
-        //var Lampada extends Moble{}
+    if(numPotes<=0){console.log("Un moble necessita un nombre de potes positiu superior a 0");}
+    else if(numPotes==1){
+        return new Lampada(numPotes);
     }
+    else if(numPotes>1 && numPotes<4){
+        return new Cadira(numPotes);
+    }else{
+        return new Taula(numPotes);
+    }
+}
+
+for(let i=1;i<5;i++){
+    var moble = crearMoble(i);
+    moble.faig();
 }
