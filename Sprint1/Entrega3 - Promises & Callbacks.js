@@ -70,22 +70,41 @@ let getEmployee = id => {
     })
 }
 
+// Exercici 2
+// Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
+let getSalary = employee => {
+    return new Promise((resolve,reject) => {
+        for(var index in salaries){
+            if(salaries[index].id == employee.id){  //tocaria comprovar d'alguna manera que employee és un objecte mínimament vàlid.
+                resolve(salaries[index].salary);
+            }
+        }
+        reject("No s'ha trobat aquest empleat.")
+    })
+    
+}
+
+// Exercici 3
+// Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
+getEmployee(2).then(res => {
+    console.log(`L'employee amb id ${res.id} es diu ${res.name}`);
+    getSalary(res).then(res => {
+        console.log(` i té un salari de ${res}.`)
+    });
+})
+
+// Promise.all?
+
+
+/* //Comprovant que funciona
 //Provant que funciona amb un id existent.
 let resultat = getEmployee(2);
 resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
 
-//Provant que no funciona amb un id inexisten.
+//Provant que no funciona amb un id inexistent.
 resultat = getEmployee(5);
 resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
 
-// Exercici 2
-// Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
-let getSalary = employee => {
-   for(var index in salaries){
-        if(salaries[index].id == employee.id){
-            return salaries[index].salary;
-        }
-   }
-}
-//Comprovant que funciona
-console.log(getSalary(employees[1]));
+
+var salari = getSalary(employees[1]);
+salari.then(res => {console.log(res)}, err => {console.log(err)}); */
