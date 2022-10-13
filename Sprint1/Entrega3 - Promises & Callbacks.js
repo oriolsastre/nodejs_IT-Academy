@@ -87,4 +87,5 @@ let getSalary = employee => {
         }
    }
 }
-console.log(getSalary(employees[2]));
+//Comprovant que funciona
+console.log(getSalary(employees[1]));
