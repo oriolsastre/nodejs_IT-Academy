@@ -81,5 +81,6 @@ resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name
 // Exercici 2
 // Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 let getSalary = employee => {
-    
+    console.log(employees[0])
 }
+getSalary(0);
