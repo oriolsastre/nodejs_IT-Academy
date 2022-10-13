@@ -13,7 +13,7 @@ let esMult3 = i => {
     })
 
 }
-
+//Comprovant amb varis valors per veure els missatges de resolved i reject.
 for(let i=6;i<10;i++){
     const comprova3 = esMult3(i);
     comprova3.then(res => {console.log(res)}, err => {console.log(err)})
