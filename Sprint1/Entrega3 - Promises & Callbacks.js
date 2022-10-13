@@ -4,21 +4,18 @@
 Invoca-la passant-li les dues funcions de manera que imprimeixin un missatge diferent depenent de si la Promise es resol o no. */
 
 let esMult3 = i => {
-    const calcMult3 = new Promise( (resolve,reject) => {
+    return new Promise( (resolve,reject) => {
         if(i%3===0){
             resolve(`${i} és múltiple de 3.`);
         }else{
             reject(`${i} NO és múltiple de 3.`);
         }
     })
-    return calcMult3;
+
 }
 
 for(let i=1;i<11;i++){
     const comprova3 = esMult3(i);
-    /* comprova3
-        .then( res => {console.log(res)})
-        .catch( err => {console.log(err)}) */
     comprova3.then(res => {console.log(res)}, err => {console.log(err)})
 }
 
@@ -56,7 +53,33 @@ let salaries = [{
     salary: 2000
 }];
 
+// Exercici 1
 // Donats els objectes employees i salaries, crea una arrow function getEmployee() que retorni una Promise efectuant la cerca en l'objecte pel seu id.
-let getEmployee = (employees,id) => {
+let getEmployee = (llista,id) => {
+    return new Promise ((resolve, reject) => {
+        var trobat = false;
+        var empleat = null;
+        for(var index in llista){
+            if(llista[index].id === id){
+                trobat = true;
+                empleat = llista[index];
+            }
+        }
+        if(trobat){resolve(empleat);}
+        else{reject(`No s'ha trobat cap empleat amb id ${id}.`);}
+    })
+}
 
+//Provant que funciona amb un id existent.
+let resultat = getEmployee(employees,2);
+resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
+
+//Provant que no funciona amb un id inexisten.
+resultat = getEmployee(employees,5);
+resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
+
+// Exercici 2
+// Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
+let getSalary = employee => {
+    
 }
