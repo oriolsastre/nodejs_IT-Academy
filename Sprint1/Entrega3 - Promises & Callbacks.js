@@ -66,30 +66,41 @@ let getEmployee = id => {
             }
         }
         if(trobat){resolve(empleat);}
-        else{reject(`No s'ha trobat cap empleat amb id ${id}.`);}
+        else{reject(new Error(`No s'ha trobat cap empleat amb id ${id}.`))}
     })
 }
-//Comprovació que funciona a l'exercici 3
 
 // Exercici 2
 // Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 let getSalary = employee => {
     return new Promise((resolve,reject) => {
+        //comprovar que l'objecte employee té una id
+        if(typeof employee.id !== 'number'){reject(new Error(`Objecte d'empleat invàlid o sense id vàlida!`))}
+        
         for(var index in salaries){
-            if(salaries[index].id == employee.id){  //tocaria comprovar d'alguna manera que employee és un objecte mínimament vàlid.
+            if(salaries[index].id == employee.id){
                 resolve(salaries[index].salary);
             }
         }
-        reject("No s'ha trobat aquest empleat.")
+        reject(new Error("No s'ha trobat aquest empleat."))
     })
     
 }
-//Comprovació que funciona a l'exercici 3
 
 // Exercici 3
 // Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
-getEmployee(2).then(res1 => {
-    getSalary(res1).then(res2 => {
-        console.log(`L'employee amb id ${res1.id} es diu ${res1.name} i té un salari de ${res2} unitats monetàries.`)
-    });
-})
+
+getEmployee(3)
+    .then(res => {
+        infoEmpleat = res;
+        return getSalary(res);
+    })
+    .then(res => {
+        console.log(`L'employee amb id ${infoEmpleat.id} es diu ${infoEmpleat.name} i té un salari de ${res} unitats monetàries.`);
+    })
+    .catch(err => {console.log(err.message);})  //Nivell 3, exercici 1
+
+/* Nivell 3 */
+// Exercici 1
+// Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
+// Per comprovar que els errors es mostren, o bé cridar getEmployee(7), o esborrar un objecte de l'array tant employees com salaries i provar d'accedir-lo 
