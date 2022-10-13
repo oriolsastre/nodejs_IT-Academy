@@ -69,6 +69,7 @@ let getEmployee = id => {
         else{reject(`No s'ha trobat cap empleat amb id ${id}.`);}
     })
 }
+//Comprovació que funciona a l'exercici 3
 
 // Exercici 2
 // Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
@@ -83,28 +84,12 @@ let getSalary = employee => {
     })
     
 }
+//Comprovació que funciona a l'exercici 3
 
 // Exercici 3
 // Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat/da i el seu salari.
-getEmployee(2).then(res => {
-    console.log(`L'employee amb id ${res.id} es diu ${res.name}`);
-    getSalary(res).then(res => {
-        console.log(` i té un salari de ${res}.`)
+getEmployee(2).then(res1 => {
+    getSalary(res1).then(res2 => {
+        console.log(`L'employee amb id ${res1.id} es diu ${res1.name} i té un salari de ${res2} unitats monetàries.`)
     });
 })
-
-// Promise.all?
-
-
-/* //Comprovant que funciona
-//Provant que funciona amb un id existent.
-let resultat = getEmployee(2);
-resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
-
-//Provant que no funciona amb un id inexistent.
-resultat = getEmployee(5);
-resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
-
-
-var salari = getSalary(employees[1]);
-salari.then(res => {console.log(res)}, err => {console.log(err)}); */
