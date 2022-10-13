@@ -14,7 +14,7 @@ let esMult3 = i => {
 
 }
 
-for(let i=1;i<11;i++){
+for(let i=6;i<10;i++){
     const comprova3 = esMult3(i);
     comprova3.then(res => {console.log(res)}, err => {console.log(err)})
 }
@@ -57,6 +57,7 @@ let salaries = [{
 // Donats els objectes employees i salaries, crea una arrow function getEmployee() que retorni una Promise efectuant la cerca en l'objecte pel seu id.
 let getEmployee = id => {
     return new Promise ((resolve, reject) => {
+        if(typeof id !== 'number'){reject(new Error(`L'ID ha de ser un número.`))}
         var trobat = false;
         var empleat = null;
         for(var index in employees){
@@ -103,4 +104,4 @@ getEmployee(3)
 /* Nivell 3 */
 // Exercici 1
 // Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
-// Per comprovar que els errors es mostren, o bé cridar getEmployee(7), o esborrar un objecte de l'array tant employees com salaries i provar d'accedir-lo 
+// Per comprovar que els errors es mostren, o bé cridar getEmployee(7), o getEmployee('a'), o esborrar un objecte de l'array tant employees com salaries i provar d'accedir-lo 
