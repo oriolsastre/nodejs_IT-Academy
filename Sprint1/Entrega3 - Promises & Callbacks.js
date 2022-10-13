@@ -55,14 +55,14 @@ let salaries = [{
 
 // Exercici 1
 // Donats els objectes employees i salaries, crea una arrow function getEmployee() que retorni una Promise efectuant la cerca en l'objecte pel seu id.
-let getEmployee = (llista,id) => {
+let getEmployee = id => {
     return new Promise ((resolve, reject) => {
         var trobat = false;
         var empleat = null;
-        for(var index in llista){
-            if(llista[index].id === id){
+        for(var index in employees){
+            if(employees[index].id === id){
                 trobat = true;
-                empleat = llista[index];
+                empleat = employees[index];
             }
         }
         if(trobat){resolve(empleat);}
@@ -71,16 +71,20 @@ let getEmployee = (llista,id) => {
 }
 
 //Provant que funciona amb un id existent.
-let resultat = getEmployee(employees,2);
+let resultat = getEmployee(2);
 resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
 
 //Provant que no funciona amb un id inexisten.
-resultat = getEmployee(employees,5);
+resultat = getEmployee(5);
 resultat.then(res => {console.log(`L'employee amb id ${res.id} es diu ${res.name}`)}, err => {console.log(err)});
 
 // Exercici 2
 // Crea una altra arrow function getSalary() similar a l'anterior que rebi com a paràmetre un objecte employee i retorni el seu salari.
 let getSalary = employee => {
-    console.log(employees[0])
+   for(var index in salaries){
+        if(salaries[index].id == employee.id){
+            return salaries[index].salary;
+        }
+   }
 }
-getSalary(0);
+console.log(getSalary(employees[2]));
