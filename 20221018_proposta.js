@@ -6,8 +6,8 @@ function passarPortes(n,nombrePassades){
     else if(nombrePassades>n){
         /* Un cop fem la n-passada i per tant movem la n-porta, al fer la passada n+1 intentem obrir la porta n+1, que
         no existeix, sense canviar les anteriors. Per tant, arribats a aquest punt, per més passades que fem, el
-        resultat no canvia. Estalvies una mica de feina/memòria a la màquina a l'hora de fer l'array i les iteracions.*/
-        return passarPortes(n,n);
+        resultat no canvia.*/
+        nombrePassades=n;
     }
 
     //inicialitzem l'array portes amb totes les portes tancades, tancat=0
