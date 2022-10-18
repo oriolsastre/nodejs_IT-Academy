@@ -2,7 +2,7 @@ function passarPortes(n,nombrePassades){
     //casos trivials
     if(n==0 || nombrePassades==0){return 0;}    //o no hi ha portes o no passem cap vegada a obrir-les
     else if(nombrePassades==1){return n;}       //obrim totes els portes un cop i ja està
-    else if(n==1){return 1;}                    //aquest és així per que ja descartem el cas de 0 passades. I un cop obrim la primera porta, ja no la tocarem més al futur
+    else if(n==1){return 1;}                    //aquest és així per que ja descartem el cas de 0 passades. I un cop obrim la primera porta, ja no la tocarem més al futur.
     else if(nombrePassades>n){
         /* Un cop fem la n-passada i per tant movem la n-porta, al fer la passada n+1 intentem obrir la porta n+1, que
         no existeix, sense canviar les anteriors. Per tant, arribats a aquest punt, per més passades que fem, el
