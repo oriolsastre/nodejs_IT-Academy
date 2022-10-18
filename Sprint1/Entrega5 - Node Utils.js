@@ -1,3 +1,5 @@
+const { resolve } = require('path');
+
 fs = require('fs');
 zlib = require('zlib');
 stream = require('stream');
@@ -38,8 +40,23 @@ function comprimir(fitxer){
       }
     });
 }
-//comprimir('./Sprint1/Entrega5_1.txt')
+//comprimir('./Sprint1/Entrega5_1.txt');
 
 /* Nivell 2 */
 // Exercici 1
 // Crea una funció que imprimeixi recursivament un missatge per la consola amb demores d'un segon.
+function printRecursiu(missatge,vegades){
+    setTimeout(()=>{
+        console.log(missatge);
+        if(vegades>1){
+            printRecursiu(missatge,(vegades-1));
+        }
+    },1000);
+}
+//printRecursiu('Hola',3);
+
+// Exercici 2
+// Crea una funció que llisti per la consola el contingut del directori d'usuari/ària de l'ordinador utilizant Node Child Processes.
+
+
+/* Nivell 3 */
