@@ -63,7 +63,7 @@ async function empleatSalari(id){
     }
 }
 //comprovació
-empleatSalari(2);
+//empleatSalari(2);
 
 // Exercici 2
 // Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
@@ -76,9 +76,47 @@ async function cridaFuncio(){
     }catch(err){console.log(err.message);}
 }
 //comprovacio
-cridaFuncio();
+//cridaFuncio();
 
 /* Nivell 2 */
 // Exercici 1
 // Crea una funció que retorni el doble del número que li passa com a paràmetre després de 2 segons.
-/* setTimeout(()=>{},2000) a*/
+// Crea una altra funció que rebi tres números i calculi la suma dels seus dobles fent servir la funció anterior.
+async function dobleTard(a){
+    let doble = new Promise((resolve,reject) =>{
+        if(typeof a !== 'number'){reject(Error('Aquesta funció només accepta números.'));}
+        setTimeout(()=>{
+            resolve(2*a);
+        },2000);
+    });
+    try{
+        const resultat = await doble;
+        return resultat;
+    }catch(err){console.log(err.message);}
+}
+
+async function sumaDobles(a,b,c){
+    try{
+        const a2 = await dobleTard(a);
+        const b2 = await dobleTard(b);
+        const c2 = await dobleTard(c);
+        return (a2+b2+c2)
+    }catch{(err)=>console.log(err.message);}
+}
+
+//dobleTard(2).then(val => console.log(val));
+//sumaDobles(1,2,3).then(val => console.log(val));
+
+/* Nivell 3 */
+// Exercici 1
+// Força i captura tants errors com puguis dels nivells 1 i 2
+
+// Això que havia fet al Nivell 3 de l'Entrega 3 que correspondria al nivell 1 d'aquesta entrega.
+getEmployee(7).catch((err)=>{console.log(err.message)});
+getEmployee('a').catch((err)=>{console.log(err.message)});;
+//o també
+empleatSalari(7);
+
+//Pel Nivell 2
+dobleTard('a');
+sumaDobles(1,2);
