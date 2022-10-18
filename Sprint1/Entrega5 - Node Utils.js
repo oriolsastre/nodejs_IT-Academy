@@ -1,8 +1,8 @@
-const { resolve } = require('path');
-
 fs = require('fs');
-zlib = require('zlib');
-stream = require('stream');
+const { createGzip } = require('zlib');
+const { pipeline } = require('stream');
+const { exec } = require('child_process');
+cp = require('child_process');
 
 /* Nivell 1 */
 // Exercici 1
@@ -13,8 +13,7 @@ function escriuFrase(frase){
         if(err){console.log(err)}
     });
 }
-
-escriuFrase('Prova sobreescrita');
+//escriuFrase('Prova sobreescrita');
 
 //Exercici 2
 // Crea una altra funció que mostri per consola el contingut del fitxer de l'exercici anterior.
@@ -29,11 +28,11 @@ function llegirArxiu(arxiu){
 // Exercici 3
 // Crea una funció que comprimeixi el fitxer del nivell 1.
 function comprimir(fitxer){
-    const gzip = zlib.createGzip();
+    const gzip = createGzip();
     const source = fs.createReadStream(fitxer);
     const destination = fs.createWriteStream(fitxer+'.gz');
     
-    stream.pipeline(source, gzip, destination, (err) => {
+    pipeline(source, gzip, destination, (err) => {
       if (err) {
         console.error('An error occurred:', err);
         process.exitCode = 1;
@@ -57,6 +56,12 @@ function printRecursiu(missatge,vegades){
 
 // Exercici 2
 // Crea una funció que llisti per la consola el contingut del directori d'usuari/ària de l'ordinador utilizant Node Child Processes.
-
+exec("dir /Users",(err,stdout,stderr)=>{
+    console.log(stdout);
+})
+//fer servir el mètode exec?
 
 /* Nivell 3 */
+// Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1.
+// Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algoritme aes-192-cbc, i esborri els fitxers inicials.
+// Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
