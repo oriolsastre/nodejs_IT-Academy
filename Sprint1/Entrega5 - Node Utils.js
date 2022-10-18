@@ -1,4 +1,6 @@
 fs = require('fs');
+zlib = require('zlib');
+stream = require('stream');
 
 /* Nivell 1 */
 // Exercici 1
@@ -24,3 +26,20 @@ function llegirArxiu(arxiu){
 
 // Exercici 3
 // Crea una funció que comprimeixi el fitxer del nivell 1.
+function comprimir(fitxer){
+    const gzip = zlib.createGzip();
+    const source = fs.createReadStream(fitxer);
+    const destination = fs.createWriteStream(fitxer+'.gz');
+    
+    stream.pipeline(source, gzip, destination, (err) => {
+      if (err) {
+        console.error('An error occurred:', err);
+        process.exitCode = 1;
+      }
+    });
+}
+//comprimir('./Sprint1/Entrega5_1.txt')
+
+/* Nivell 2 */
+// Exercici 1
+// Crea una funció que imprimeixi recursivament un missatge per la consola amb demores d'un segon.
