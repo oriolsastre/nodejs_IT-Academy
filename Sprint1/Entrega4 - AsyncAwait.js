@@ -17,4 +17,4 @@ async function empleatSalari(id){
 /* Nivell 2 */
 // Exercici 1
 // Crea una funció que retorni el doble del número que li passa com a paràmetre després de 2 segons.
-/* setTimeout(()=>{},2000) */
+/* setTimeout(()=>{},2000) a*/
