@@ -23,7 +23,7 @@ function llegirArxiu(arxiu){
         else{console.log(data)}
     });
 }
-//llegirArxiu('./Sprint1/Entrega5_1.txt');
+//llegirArxiu('Entrega5_1.txt');
 
 // Exercici 3
 // Crea una funció que comprimeixi el fitxer del nivell 1.
@@ -39,7 +39,7 @@ function comprimir(fitxer){
       }
     });
 }
-//comprimir('./Sprint1/Entrega5_1.txt');
+//comprimir('Entrega5_1.txt');
 
 /* Nivell 2 */
 // Exercici 1
@@ -80,7 +80,44 @@ function file2HexAndb64(nomFitxer){
         }
     })
 }
-file2HexAndb64('Entrega5_1.txt');
+//file2HexAndb64('Entrega5_1.txt');
 
 // Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algoritme aes-192-cbc, i esborri els fitxers inicials.
+function encriptarFitxer(nomFitxer,contrasenya){
+    const algoritme = 'aes-192-cbc';
+    cy.scrypt(contrasenya,'salobre',24,(err,clau)=>{
+        if(err){throw err;}
+        cy.randomFill(new Uint8Array(16), (err,iv)=>{
+            if(err){throw err;}
+            const xifratge = cy.createCipheriv(algoritme,clau,'aaaaaaaaaaaaaaaa');
+
+            const partsNom = nomFitxer.split(".");
+            const input = fs.createReadStream(nomFitxer);
+            const output = fs.createWriteStream(`${partsNom[0]}.enc`);
+            pipeline(input, xifratge, output, (err) => {
+                if (err) throw err;
+                fs.unlink(nomFitxer,(err)=>{
+                    if(err) throw err;
+                })
+            });
+        })
+    })
+}
+//encriptarFitxer('Entrega5_1b64.txt','1234');
+//encriptarFitxer('Entrega5_1Hex.txt','1234');
+
 // Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
+function decipherDecode(nomFitxer, contrasenya){
+    const algoritme = 'aes-192-cbc';
+    const clau = cy.scryptSync(contrasenya, 'salobre', 24);
+    const iv = Buffer.alloc(16, 0);
+    const decipher = cy.createDecipheriv(algoritme, clau, 'aaaaaaaaaaaaaaaa');
+    
+    const partsNom = nomFitxer.split(".");
+    const input = fs.createReadStream(nomFitxer);
+    const output = fs.createWriteStream(partsNom[0]+'.txt');
+    input.pipe(decipher).pipe(output);
+}
+
+decipherDecode('Entrega5_1b64.enc','1234');
+decipherDecode('Entrega5_1Hex.enc','1234');
