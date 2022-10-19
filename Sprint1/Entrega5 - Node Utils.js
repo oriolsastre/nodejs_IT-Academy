@@ -56,12 +56,18 @@ function printRecursiu(missatge,vegades){
 
 // Exercici 2
 // Crea una funció que llisti per la consola el contingut del directori d'usuari/ària de l'ordinador utilizant Node Child Processes.
-exec("dir /Users",(err,stdout,stderr)=>{
-    console.log(stdout);
-})
-//fer servir el mètode exec?
+function llistarDirectoriUsuari(nomUsuari){
+    exec(`dir C:\\Users\\${nomUsuari}`,(err,stdout,stderr)=>{
+        if(err){console.log(stderr);}
+        else{console.log(stdout);}
+    })
+}
+//llistarDirectoriUsuari('formacio');
 
 /* Nivell 3 */
 // Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1.
+function file2HexAndb64(fitxer){
+    
+}
 // Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algoritme aes-192-cbc, i esborri els fitxers inicials.
 // Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
