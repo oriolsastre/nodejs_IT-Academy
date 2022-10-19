@@ -73,8 +73,8 @@ function file2HexAndb64(nomFitxer){
         else{
             const dataHex = data.toString('hex');
             const dataB64 = data.toString('base64');
-            const nouNomHex = partsNom[0] + 'Hex.txt';
-            const nouNomb64 = partsNom[0] + 'b64.txt';
+            const nouNomHex = partsNom[0] + 'hex.txt';
+            const nouNomb64 = partsNom[0] + 'base64.txt';
             fs.writeFile(nouNomHex,dataHex,function(err){if(err){console.log(err)}});
             fs.writeFile(nouNomb64,dataB64,function(err){if(err){console.log(err)}});
         }
@@ -103,8 +103,8 @@ function encriptarFitxer(nomFitxer,contrasenya){
         })
     })
 }
-//encriptarFitxer('Entrega5_1b64.txt','1234');
-//encriptarFitxer('Entrega5_1Hex.txt','1234');
+//encriptarFitxer('Entrega5_1base64.txt','1234');
+//encriptarFitxer('Entrega5_1hex.txt','1234');
 
 // Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
 function decipherDecode(nomFitxer, contrasenya){
@@ -114,10 +114,29 @@ function decipherDecode(nomFitxer, contrasenya){
     const decipher = cy.createDecipheriv(algoritme, clau, 'aaaaaaaaaaaaaaaa');
     
     const partsNom = nomFitxer.split(".");
+    const tipus = partsNom[0].split("1")[1];
+
     const input = fs.createReadStream(nomFitxer);
     const output = fs.createWriteStream(partsNom[0]+'.txt');
     input.pipe(decipher).pipe(output);
+    fs.readFile(`${partsNom[0]}.txt`,(err,data) => {
+        if(err){console.log(err);}
+        else{
+            const dades64 = data.toString('ascii');
+            let buf64 = new Buffer.from(dades64, tipus);
+            const pla = buf64.toString('ascii');
+            
+            const nouNom = partsNom[0] + 'Original.txt';
+            
+            fs.writeFile(nouNom,pla,function(err){if(err){console.log(err)}});
+            fs.unlink(partsNom[0]+'.txt',(err)=>{
+                if(err) throw err;
+            })
+            
+        }
+    })
+
 }
 
-decipherDecode('Entrega5_1b64.enc','1234');
-decipherDecode('Entrega5_1Hex.enc','1234');
+//decipherDecode('Entrega5_1base64.enc','1234');
+//decipherDecode('Entrega5_1hex.enc','1234');
