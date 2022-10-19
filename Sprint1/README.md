@@ -12,7 +12,7 @@ El nom del fitxer ja vindrà determinat i per codificar-lo cridem la funció:
 
 ### Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algoritme aes-192-cbc, i esborri els fitxers inicials.
 
-Un cop s'hagin generat els dos fitxers, que tindran de nom Entrega5_1hex.txt i Entrega_1base64.txt, els encriptarem usant la mateixa funció dues vegades, una per a cada fitxer. Haurem d'establir una contrasenya que cal recordar per a poder desencriptar els fitxers.
+Un cop s'hagin generat els dos fitxers, que tindran de nom Entrega5_1hex.txt i Entrega5_1base64.txt, els encriptarem usant la mateixa funció dues vegades, una per a cada fitxer. Haurem d'establir una contrasenya que cal recordar per a poder desencriptar els fitxers.
 
 `encriptarFitxer('Entrega5_1base64.txt', contrasenya);`
 

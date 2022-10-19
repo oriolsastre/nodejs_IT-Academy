@@ -110,7 +110,7 @@ function encriptarFitxer(nomFitxer,contrasenya){
 function decipherDecode(nomFitxer, contrasenya){
     const algoritme = 'aes-192-cbc';
     const clau = cy.scryptSync(contrasenya, 'salobre', 24);
-    const iv = Buffer.alloc(16, 0);
+    //const iv = Buffer.alloc(16, 0);
     const decipher = cy.createDecipheriv(algoritme, clau, 'aaaaaaaaaaaaaaaa');
     
     const partsNom = nomFitxer.split(".");
@@ -137,6 +137,5 @@ function decipherDecode(nomFitxer, contrasenya){
     })
 
 }
-
 //decipherDecode('Entrega5_1base64.enc','1234');
 //decipherDecode('Entrega5_1hex.enc','1234');
