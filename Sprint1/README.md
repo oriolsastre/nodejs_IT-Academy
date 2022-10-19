@@ -14,9 +14,9 @@ El nom del fitxer ja vindrà determinat i per codificar-lo cridem la funció:
 
 Un cop s'hagin generat els dos fitxers, que tindran de nom Entrega5_1Hex.txt i Entrega_1b64.txt, els encriptarem usant la mateixa funció dues vegades, una per a cada fitxer. Haurem d'establir una contrasenya que cal recordar per a poder desencriptar els fitxers.
 
-`encriptarFitxer('Entrega5_1b64.txt', contrasenya);`
+`encriptarFitxer('Entrega5_1base64.txt', contrasenya);`
 
-`encriptarFitxer('Entrega5_1Hex.txt', contrasenya);`
+`encriptarFitxer('Entrega5_1hex.txt', contrasenya);`
 
 ### Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.
 
