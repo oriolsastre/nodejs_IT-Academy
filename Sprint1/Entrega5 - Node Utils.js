@@ -2,17 +2,18 @@ fs = require('fs');
 const { createGzip } = require('zlib');
 const { pipeline } = require('stream');
 const { exec } = require('child_process');
+cy = require('crypto');
 
 /* Nivell 1 */
 // Exercici 1
 // Crea una funció que, en executar-la, escrigui una frase en un fitxer.
 
 function escriuFrase(frase){
-    fs.writeFile('./Sprint1/Entrega5_1.txt',frase,function(err){
+    fs.writeFile('Entrega5_1.txt',frase,function(err){
         if(err){console.log(err)}
     });
 }
-//escriuFrase('Prova sobreescrita');
+//escriuFrase('Text de prova que ha de ser codificat, encriptat, desencriptat i descodificat per als exercicis del Nivell 3.');
 
 //Exercici 2
 // Crea una altra funció que mostri per consola el contingut del fitxer de l'exercici anterior.
@@ -67,7 +68,7 @@ function llistarDirectoriUsuari(nomUsuari){
 // Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1.
 function file2HexAndb64(nomFitxer){
     const partsNom = nomFitxer.split(".");
-    fs.readFile(`./Sprint1/${nomFitxer}`,(err,data) => {
+    fs.readFile(nomFitxer,(err,data) => {
         if(err){console.log(err);}
         else{
             const dataHex = data.toString('hex');
@@ -79,15 +80,7 @@ function file2HexAndb64(nomFitxer){
         }
     })
 }
+file2HexAndb64('Entrega5_1.txt');
 
-//file2HexAndb64('Entrega5_1.txt');
-//llegirArxiu('Entrega5_1Hex.txt');
-fs.readFile('Entrega5_1b64.txt', (err,data) => {
-    if(err){console.log(err)}
-    else{
-        const llegir = Buffer.from(data,'base64').toString('ascii');
-        console.log(llegir)
-    }
-});
 // Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algoritme aes-192-cbc, i esborri els fitxers inicials.
 // Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial.

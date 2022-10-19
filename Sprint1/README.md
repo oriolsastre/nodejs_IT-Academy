@@ -2,7 +2,7 @@
 ## Instruccions exercici Nivell 3
 ### Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1.
 
-Cal que el fitxer que volem codificar estigui a la mateixa carpeta que l'script. En aquest cas, com que és el fitxer que s'origina a l'exercici 1 primer de tot el creem amb el contingut que volguem amb:
+Cal que creem el fitxer amb la funció que l'origina a l'exercici 1 amb el contingut que volguem amb:
 
 `escriuFrase(` _{missatge}_ `)`
 
