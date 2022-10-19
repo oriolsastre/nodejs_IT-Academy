@@ -1,0 +1,1 @@
+Text de prova que ha de ser codificat, encriptat, desencriptat i descodificat per als exercicis del Nivell 3.
