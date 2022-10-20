@@ -26,4 +26,4 @@ function dividir(){
     return aritmetica('/',arguments);
 }
 
-module.exports = (sumar,restar,multiplicar,dividir)
+module.exports = { sumar,restar,multiplicar,dividir }

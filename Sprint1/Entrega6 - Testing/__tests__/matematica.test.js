@@ -1,1 +1,0 @@
-const sumar = require('./matematica')
