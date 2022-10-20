@@ -1,0 +1,16 @@
+{
+  "name": "entrega6",
+  "version": "1.0.0",
+  "description": "Entrega 6 de testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "jest",
+    "testing",
+    "nodejs"
+  ],
+  "author": "Oriol Sastre",
+  "license": "ISC"
+}
