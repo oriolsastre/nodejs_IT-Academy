@@ -6,3 +6,7 @@ test("Sumar/Restar/Multiplicar/Dividir 3 elements", ()=>{
     expect(matematica.multiplicar(1,2,3)).toBe(6);
     expect(matematica.dividir(8,4,2)).toBe(1);
 })
+
+test("Dividir per 0 no està definit", () => {
+    expect(matematica.dividir(1,0)).toBe('undefined');
+})
