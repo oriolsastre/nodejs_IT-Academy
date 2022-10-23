@@ -12,5 +12,8 @@
     "nodejs"
   ],
   "author": "Oriol Sastre",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.2.1"
+  }
 }
