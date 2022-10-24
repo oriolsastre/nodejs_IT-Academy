@@ -4,8 +4,11 @@ function aritmetica(){
     const valors = Array.from(args[0]);
     var operacio = new Array();
     valors.map(arg => {
+        if(isNaN(arg)){throw new Error("No és un nombre!")}
         operacio.push(arg,operand);
     })
+    if(valors.length === 0){throw new Error("No hi ha cap nombre.")}
+    if(valors.length === 1){return valors[0];}
     operacio.pop();
     return eval(operacio.join(' '));
 }
