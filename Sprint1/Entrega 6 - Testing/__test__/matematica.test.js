@@ -21,6 +21,28 @@ test("Fer operacions amb decimals", () => {
     expect(matematica.dividir(0.25,1.78,-2.56)).toBe((0.25/1.78)/-2.56);
 })
 
-test("No es pot dividir per 0", () => {
-    expect(matematica.dividir(1,0)).toBe(Error);
+test("No es pot dividir per 0, en cap posició, excepte si NOMÉS és la primera.", () => {
+    expect(() => {
+        matematica.dividir(1,0)
+    }).toThrow(Error);
+    expect(() => {
+        matematica.dividir(1,0,5)
+    }).toThrow(Error);
+    expect(() => {
+        matematica.dividir(1,5,0)
+    }).toThrow(Error);
+    expect(() => {
+        matematica.dividir(0,0)
+    }).toThrow(Error);
+    expect(() => {
+        matematica.dividir(0,0,1)
+    }).toThrow(Error);
+    expect(matematica.dividir(0,1)).toBe(0);
+})
+
+test("Només acceptar nombres", () => {
+    expect(matematica.sumar(0.25,1.78,-2.56)).toBe(0.25+1.78-2.56);
+    expect(matematica.restar(0.25,1.78,-2.56)).toBe(0.25-1.78+2.56);
+    expect(matematica.multiplicar(0.25,1.78,-2.56)).toBe(0.25*1.78*-2.56);
+    expect(matematica.dividir(0.25,1.78,-2.56)).toBe((0.25/1.78)/-2.56);
 })
