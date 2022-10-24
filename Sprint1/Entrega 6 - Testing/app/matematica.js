@@ -23,12 +23,12 @@ function multiplicar(){
 }
 
 function dividir(){
-    var dividirZero=false;
     Array.from(arguments).forEach( (valor,index) => {
-        if(valor===0 && index>0){dividirZero=true;}
+        if(valor===0 && index>0){
+            throw new Error("No és permès dividir per 0")
+        }
     })
-    if(dividirZero){return Error("No és permès dividir per 0.");}
-    else{return aritmetica('/',arguments);}
+    return aritmetica('/',arguments);
 }
 
 module.exports = { sumar,restar,multiplicar,dividir }
