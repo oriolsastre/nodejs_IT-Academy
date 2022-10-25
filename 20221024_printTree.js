@@ -1,5 +1,5 @@
 function printTree(n){
-    if(!Number.isInteger(n) || n===0){return console.log("L'input ha de ser un nombre enter positiu >0.")}
+    if(!Number.isInteger(n) || n<1){return console.log("L'input ha de ser un nombre enter positiu >0.")}
     else if(n===1){return console.log("·")}
     
     const nivells = Math.ceil(Math.log2(n));
