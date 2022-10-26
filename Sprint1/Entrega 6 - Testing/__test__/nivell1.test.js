@@ -124,6 +124,11 @@ describe("Punt 3. Testejar les funcions de getEmployee i getSalary", () => {
     })
 })
 
-describe("Verificar el funcionament de la funció de l'Entrega 4 Nivell 1 Exercici 1", () => {
-    
+describe("Punt 4. Verificar el funcionament de la funció de l'Entrega 4 Nivell 1 Exercici 2", () => {
+    test("El timeout interior que espera 2 segons és cridat.", async () => {
+        jest.useFakeTimers();
+        jest.spyOn(global, 'setTimeout');
+        await e3.cridaFuncio();
+        expect(setTimeout).toHaveBeenCalledTimes(1);
+    })
 })
