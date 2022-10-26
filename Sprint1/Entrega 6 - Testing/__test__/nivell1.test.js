@@ -58,14 +58,45 @@ describe("Punt 1. Testejar les funcions matemàtiques de sumar, restar, multipli
 })
 
 describe("Punt 2. Testejar les dues funcions de l'Entrega 3 Promises i Callbacks, Nivell 1 Exercici 2.", () => {
+    const mockFn = jest.fn((x,y) => {y})
+    test("Funcionament normal de la suma iterativa de nombres amb 1, 2 o més dígits", () => {
+        e3.sumaIterativa(2,mockFn);
+        expect(mockFn).toHaveBeenCalledWith(2,2)
+        e3.sumaIterativa(37,mockFn);
+        expect(mockFn).toHaveBeenCalledWith(37,1)
+        e3.sumaIterativa(159,mockFn);
+        expect(mockFn).toHaveBeenCalledWith(159,6)
+        e3.sumaIterativa(7353,mockFn);
+        expect(mockFn).toHaveBeenCalledWith(7353,9)
+    })
     test("Només acceptar nombres enters.", () => {
         expect(()=>{
-            e3.sumaIterativa("b",e3.mostraMissatge)
+            e3.sumaIterativa("b",mockFn)
         }).toThrow(Error("La suma iterativa requereix un nombre enter."))
         expect(()=>{
-            e3.sumaIterativa(1.25,e3.mostraMissatge)
+            e3.sumaIterativa(1.25,mockFn)
         }).toThrow(Error("La suma iterativa requereix un nombre enter."))
     })
-    
+})
 
+describe("Punt 3. Testejar les funcions de getEmployee i getSalary", () => {
+    test("La funció getEmployee retorna l'empleat corresponent amb una id vàlida", () =>{
+        for(var index in e3.employees){
+            return e3.getEmployee(e3.employees[index].id).then(empleat => {
+                expect(empleat).toBe(e3.employees[index])
+            })
+        }
+        //número donat també com a string
+        return e3.getEmployee("2").then(empleat => {
+            expect(empleat).toBe(e3.employees[2])
+        })
+    })
+    test("L'id de l'empleat no existeix a l'objecte on el busquem.", async () => {
+        var indexSuperior = (e3.employees[e3.employees.length-1].id)+1; //obtinc un id+1 de l'id de l'últim empleat. Com que estan ordenats, serà més gran que quaslevol altre, és a dir, no existirà
+        await expect(e3.getEmployee(indexSuperior)).rejects.toThrow(Error(`No s'ha trobat cap empleat amb id ${indexSuperior}.`))
+    })
+    test("La id no és vàlida, perquè no és un número enter.", async () => {
+        await expect(e3.getEmployee('a')).rejects.toThrow(Error(`L'ID ha de ser un número enter.`))
+        await expect(e3.getEmployee(1.25)).rejects.toThrow(Error(`L'ID ha de ser un número enter.`))
+    })
 })

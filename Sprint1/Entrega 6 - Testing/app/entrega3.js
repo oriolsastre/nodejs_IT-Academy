@@ -9,10 +9,31 @@ const sumaIterativa = (nombre, callback) => {
 }
 
 //Nivell 2
+let employees = [{
+    id: 1,
+    name: 'Linux Torvalds'
+}, {
+    id: 2,
+    name: 'Bill Gates'
+},{
+    id: 3,
+    name: 'Jeff Bezos'
+}];
+ 
+let salaries = [{
+    id: 1,
+    salary: 4000
+}, {
+    id: 2,
+    salary: 1000
+}, {
+    id: 3,
+    salary: 2000
+}];
 
 let getEmployee = id => {
     return new Promise ((resolve, reject) => {
-        if(typeof id !== 'number'){reject(new Error(`L'ID ha de ser un número.`))}
+        if(!Number.isInteger(id)){reject(new Error(`L'ID ha de ser un número enter.`))}
         var trobat = false;
         var empleat = null;
         for(var index in employees){
@@ -41,4 +62,4 @@ let getSalary = employee => {
     
 }
 
-module.exports = {mostraMissatge, sumaIterativa, getEmployee, getSalary}
+module.exports = {mostraMissatge, sumaIterativa, employees, salaries, getEmployee, getSalary}
