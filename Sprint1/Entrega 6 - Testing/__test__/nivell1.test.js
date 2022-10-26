@@ -99,4 +99,31 @@ describe("Punt 3. Testejar les funcions de getEmployee i getSalary", () => {
         await expect(e3.getEmployee('a')).rejects.toThrow(Error(`L'ID ha de ser un número enter.`))
         await expect(e3.getEmployee(1.25)).rejects.toThrow(Error(`L'ID ha de ser un número enter.`))
     })
+    test("La funció getSalary retorna un salari si se li dona un empleat vàlid.", () => {
+        for(var index in e3.employees){
+            return e3.getSalary(e3.employees[index]).then(salari => {
+                expect(typeof salari).toBe('number')
+            })
+        }
+    })
+    test("Retorn d'error si se li dona un empleat que no té un salari associat", async () => {
+        const empleatFals = {
+            id: 5,
+            name: 'Oriol Sastre'
+        }
+        await expect(e3.getSalary(empleatFals)).rejects.toThrow(Error("No s'ha trobat aquest empleat."))
+    })
+    test("Retorn d'error si l'empleat no té una id vàlida o si no és un objecte d'empleat vàlid.", async () => {
+        const empleatFals = {
+            id: 'a',
+            name: 'Oriol Sastre'
+        }
+        await expect(e3.getSalary(empleatFals)).rejects.toThrow(Error(`Objecte d'empleat invàlid o sense id vàlida!`))
+        await expect(e3.getSalary('text')).rejects.toThrow(Error(`Objecte d'empleat invàlid o sense id vàlida!`))
+        await expect(e3.getSalary(2)).rejects.toThrow(Error(`Objecte d'empleat invàlid o sense id vàlida!`))
+    })
+})
+
+describe("Verificar el funcionament de la funció de l'Entrega 4 Nivell 1 Exercici 1", () => {
+    
 })

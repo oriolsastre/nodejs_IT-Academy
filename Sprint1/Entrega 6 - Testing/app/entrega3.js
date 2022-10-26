@@ -62,4 +62,15 @@ let getSalary = employee => {
     
 }
 
-module.exports = {mostraMissatge, sumaIterativa, employees, salaries, getEmployee, getSalary}
+//Entrega 4 Nivell 1 Exercici 2
+async function cridaFuncio(){
+    try{
+        const empleat = await getEmployee(2);
+        setTimeout(()=>{
+            console.log(`Dos segons més tard et dic que aquest empleat es diu ${empleat.name}`);
+        },2000)
+    }catch(err){console.log(err.message);}
+}
+
+
+module.exports = {mostraMissatge, sumaIterativa, employees, salaries, getEmployee, getSalary, cridaFuncio}
