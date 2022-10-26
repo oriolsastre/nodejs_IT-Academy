@@ -1,0 +1,13 @@
+git add
+->
+git commit
+
+les coses que s'estan modificant sovint a una branca dev
+
+projecte -> settings -> branques -> default i switch 
+
+posar-la per defecte perque es on hi hauriem de fer els pushs i els pulls requests, etc.
+
+quan clones se't baixa la branca per defecte
+
+als settings de github pots protegir les branques main i dev per a que no s'hi facin pushs
