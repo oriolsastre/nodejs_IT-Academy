@@ -19,7 +19,6 @@ async function sumaDobles(a,b,c){
         return (a2+b2+c2)
     }catch(err){throw err;}
 }
-
 class Persona {
     constructor(nom){
         this.nom=nom;
