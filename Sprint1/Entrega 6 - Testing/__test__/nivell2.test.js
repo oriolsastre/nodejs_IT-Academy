@@ -11,7 +11,35 @@ describe("Punt 1. Verifica mitjançant tests l'execució de l'exercici Async / A
             })
         }
     })
-    test("Error si no s'ha donat un número", () => {
-
+    test("Error si no s'ha donat un número", async () => {
+        const errorDoble = n2.dobleTard('a')
+        jest.runAllTimers();
+        return errorDoble.catch(err => {
+            expect(err.message).toBe('Aquesta funció només accepta números.')
+        })
     })
+    /*test("La suma dels dobles és correcte", async () => {
+        for(let a=-1;a<1;a++){
+        for(let b=2;b<5;b++){
+        for(let c=5;c<8;c++){
+            const sumaDobles = n2.sumaDobles(a,b,c);
+            jest.runAllTimers();
+            return sumaDobles.then(res => {
+                expect(res).toEqual(a*2+b*2+c*2)
+            })
+        }
+    }
+        }
+    })*/
+    test("Error si no s'ha donat un número a la funció suma dels dobles", () => {
+        const errorSumaDoble = n2.sumaDobles('a',1,2)
+        jest.runAllTimers();
+        return errorSumaDoble.catch(err => {
+            expect(err.message).toBe('Aquesta funció només accepta números.')
+        })
+    })
+})
+
+describe("Punt 2. Crea un mock que comprovi les crides al constructor de la classe Persona i al seu mètode. dirNom() en l'exercici Classes & Arrow Functions - N2 E2 i testeja que funcionen.", () => {
+    
 })

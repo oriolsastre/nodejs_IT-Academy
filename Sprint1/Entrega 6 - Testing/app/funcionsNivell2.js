@@ -8,7 +8,7 @@ async function dobleTard(a){
     try{
         const resultat = await doble;
         return resultat;
-    }catch(err){console.log(err.message);}
+    }catch(err){throw err}
 }
 
 async function sumaDobles(a,b,c){
@@ -17,7 +17,16 @@ async function sumaDobles(a,b,c){
         const b2 = await dobleTard(b);
         const c2 = await dobleTard(c);
         return (a2+b2+c2)
-    }catch{(err)=>console.log(err.message);}
+    }catch(err){throw err;}
 }
 
-module.exports = {dobleTard, sumaDobles}
+class Persona {
+    constructor(nom){
+        this.nom=nom;
+    }
+    dirNom() {
+        console.log(this.nom);
+    }
+}
+
+module.exports = {dobleTard, sumaDobles, Persona}
