@@ -2,7 +2,7 @@
 
 Per a realitzar els tests cal tenir el paquet [_jest_](https://jestjs.io/) instal·lat.
 
-Des de la consola introduïm `npm i jest` amb el paràmetre opcional `--global/-g` si interessa que s'instal·li globalment a l'ordinador i no només per a aquest projecte. 
+Si no el tenim instal·lat, des de la consola introduïm `npm i jest` amb el paràmetre opcional `--global/-g` si interessa que s'instal·li globalment a l'ordinador i no només per a aquest projecte. 
 Qualsevol dubte aquí hi ha la [documentació](https://jestjs.io/docs/getting-started).
 
 Ara ja podem realitzar els tests amb les ordres:
@@ -13,4 +13,4 @@ Ara ja podem realitzar els tests amb les ordres:
 
 - O `npm test` si volem realitzar tots els tests de tots els nivells d'un sol cop.
 
-Des d'una consola estant a la carpeta _Entrega 6 - Testing_.
+Les ordres les donem des d'una consola trobant-nos a la carpeta _Entrega 6 - Testing_.
