@@ -8,21 +8,18 @@ describe("Punt 1. Testejar les funcions matemàtiques de sumar, restar, multipli
         expect(matematica.multiplicar(1,2,3)).toBe(6);
         expect(matematica.dividir(8,4,2,1)).toBe(1);
     })
-    
     test("Fer operacions amb números negatius", () => {
         expect(matematica.sumar(-1,2,3)).toBe(4);
         expect(matematica.restar(3,-2,1)).toBe(4);
         expect(matematica.multiplicar(1,2,-3)).toBe(-6);
         expect(matematica.dividir(8,-4,-2)).toBe(1);
     })
-    
     test("Fer operacions amb decimals", () => {
         expect(matematica.sumar(0.25,1.78,-2.56)).toBe(0.25+1.78-2.56);
         expect(matematica.restar(0.25,1.78,-2.56)).toBe(0.25-1.78+2.56);
         expect(matematica.multiplicar(0.25,1.78,-2.56)).toBe(0.25*1.78*-2.56);
         expect(matematica.dividir(0.25,1.78,-2.56)).toBe((0.25/1.78)/-2.56);
     })
-    
     test("No es pot dividir per 0, en cap posició, excepte si NOMÉS és la primera.", () => {
         expect(() => {
             matematica.dividir(1,0)
@@ -41,7 +38,6 @@ describe("Punt 1. Testejar les funcions matemàtiques de sumar, restar, multipli
         }).toThrow(Error("No és permès dividir per 0"));
         expect(matematica.dividir(0,1)).toBe(0);
     })
-    
     test("Només acceptar nombres, o nombres com a String.", () => {
         expect(()=>{
             matematica.sumar("a","b",5)
@@ -125,10 +121,14 @@ describe("Punt 3. Testejar les funcions de getEmployee i getSalary", () => {
 })
 
 describe("Punt 4. Verificar el funcionament de la funció de l'Entrega 4 Nivell 1 Exercici 2", () => {
-    test("El timeout interior que espera 2 segons és cridat.", async () => {
+    test("El timeout interior que espera 2 segons és cridat i retorna una objecte amb 3 items.", () => {
         jest.useFakeTimers();
         jest.spyOn(global, 'setTimeout');
-        await e3.cridaFuncio();
+        const menu = e3.menuCuina(4);
+        jest.runAllTimers()
         expect(setTimeout).toHaveBeenCalledTimes(1);
+        return menu.then(res => {
+            expect(Object.keys(res).length).toBe(3)
+        })
     })
 })

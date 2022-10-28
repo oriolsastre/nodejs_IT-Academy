@@ -63,14 +63,46 @@ let getSalary = employee => {
 }
 
 //Entrega 4 Nivell 1 Exercici 2
-async function cridaFuncio(){
-    try{
-        const empleat = await getEmployee(2);
-        setTimeout(()=>{
-            console.log(`Dos segons més tard et dic que aquest empleat es diu ${empleat.name}`);
-        },2000)
-    }catch(err){console.log(err.message);}
+const diesSetmana = ["","Dilluns", "Dimarts", "Dimecres", "Dijous", "Divendres", "Dissabte", "Diumenge"];
+
+function menuCuina(diaSetmana){
+    return new Promise((resolve,reject) => {
+        //dilluns 1, dimarts 2...
+        if(diaSetmana<6 && diaSetmana>0){
+            var Menu = null; 
+            if(diaSetmana==4){  //dijous paella...
+                Menu = {
+                    primer: 'Amanida',
+                    segon: 'Paella',
+                    postre: 'Pastís de formatge'
+                };
+    
+            }else{
+                Menu = {
+                    primer: 'Llenties',
+                    segon: 'Estofat',
+                    postre: 'Tiramisú'
+                }
+            }
+            setTimeout(() => {
+                resolve(Menu);
+            }, 2000)
+        }else{
+            if(diaSetmana>7 || diaSetmana<1 || !Number.isInteger(diaSetmana)){reject(Error("La setmana només té 7 dies."));}
+            else{reject(Error("Tanquem el cap de setmana"));}
+        }
+    })
 }
 
+async function menuDelDia(diaSetmana, diners){
+    if(isNaN(diners)){throw new Error("Els diners disponibles ha de ser un número.");}
+    if(diners<5){throw new Error("Amb 5 unitats monetàries no en tens prou per menjar al nostre local.");}
+    try{
+        const menuDAvui = await menuCuina(diaSetmana);
+        console.log(`Avui ${diesSetmana[diaSetmana]} hi ha ${menuDAvui.primer} de primer plat, ${menuDAvui.segon} de segon, i per postres tenim ${menuDAvui.postre}.`);
+    }catch(err){
+        throw err
+    }
+}
 
-module.exports = {mostraMissatge, sumaIterativa, employees, salaries, getEmployee, getSalary, cridaFuncio}
+module.exports = {mostraMissatge, sumaIterativa, employees, salaries, getEmployee, getSalary, menuCuina, menuDelDia}
