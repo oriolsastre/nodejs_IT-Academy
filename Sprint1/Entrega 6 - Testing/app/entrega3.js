@@ -96,7 +96,7 @@ function menuCuina(diaSetmana){
 
 async function menuDelDia(diaSetmana, diners){
     if(isNaN(diners)){throw new Error("Els diners disponibles ha de ser un número.");}
-    if(diners<5){throw new Error("Amb 5 unitats monetàries no en tens prou per menjar al nostre local.");}
+    if(diners<5){throw new Error("Necessites un mínim de 5 unitats monetàries per menjar al nostre local.");}
     try{
         const menuDAvui = await menuCuina(diaSetmana);
         console.log(`Avui ${diesSetmana[diaSetmana]} hi ha ${menuDAvui.primer} de primer plat, ${menuDAvui.segon} de segon, i per postres tenim ${menuDAvui.postre}.`);

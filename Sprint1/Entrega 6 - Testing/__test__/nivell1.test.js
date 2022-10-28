@@ -121,8 +121,8 @@ describe("Punt 3. Testejar les funcions de getEmployee i getSalary", () => {
 })
 
 describe("Punt 4. Verificar el funcionament de la funció de l'Entrega 4 Nivell 1 Exercici 2", () => {
-    test("El timeout interior que espera 2 segons és cridat i retorna una objecte amb 3 items.", () => {
-        jest.useFakeTimers();
+    jest.useFakeTimers();
+    test("Funció menuCuina. Funcionament normal. El timeout interior que espera 2 segons és cridat i es retorna un menú, és a dir, objecte amb 3 items.", () => {
         jest.spyOn(global, 'setTimeout');
         const menu = e3.menuCuina(4);
         jest.runAllTimers()
@@ -130,5 +130,27 @@ describe("Punt 4. Verificar el funcionament de la funció de l'Entrega 4 Nivell 
         return menu.then(res => {
             expect(Object.keys(res).length).toBe(3)
         })
+    })
+    test("Funció menuDelDia. Funcionament normal amb un dia de la setmana vàlid, 1-7. I prou diners.", () => {
+        console.log = jest.fn();
+        for(let dia=1;dia<=7;dia++){
+            const menuDelDia = e3.menuDelDia(dia,10);
+            jest.runAllTimers();
+            menuDelDia
+                .then(val => {expect(console.log).toHaveBeenCalledWith(expect.stringMatching(/^Avui/))})
+                .catch(error => {expect(error.message).toBe("Tanquem el cap de setmana")})
+        }
+    })
+    test("Funció menuDelDia. Error si es dona una dia no vàlid.", async () => {
+        await e3.menuDelDia(0,10).catch(err => {expect(err.message).toBe("La setmana només té 7 dies.")})
+        await e3.menuDelDia(8,10).catch(err => {expect(err.message).toBe("La setmana només té 7 dies.")})
+        await e3.menuDelDia('a',10).catch(err => {expect(err.message).toBe("La setmana només té 7 dies.")})
+        await e3.menuDelDia([0,1,2],10).catch(err => {expect(err.message).toBe("La setmana només té 7 dies.")})
+    })
+    test("Funció menuDelDia. Error si no hi ha prou diners.", async () => {
+        await e3.menuDelDia(5,0).catch(err => {expect(err.message).toBe("Necessites un mínim de 5 unitats monetàries per menjar al nostre local.")})
+    })
+    test("Funció menuDelDia. Error si els diners donats no són un número.", async () => {
+        await e3.menuDelDia(5,'a').catch(err => {expect(err.message).toBe("Els diners disponibles ha de ser un número.")})
     })
 })
