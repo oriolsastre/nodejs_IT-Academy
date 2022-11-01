@@ -1,14 +1,10 @@
-async function dobleTard(a){
-    let doble = new Promise((resolve,reject) =>{
+function dobleTard(a){
+    return doble = new Promise((resolve,reject) =>{
         if(typeof a !== 'number'){reject(Error('Aquesta funció només accepta números.'));}
         setTimeout(()=>{
             resolve(2*a);
         },2000);
     });
-    try{
-        const resultat = await doble;
-        return resultat;
-    }catch(err){throw err}
 }
 
 async function sumaDobles(a,b,c){
@@ -19,6 +15,7 @@ async function sumaDobles(a,b,c){
         return (a2+b2+c2)
     }catch(err){throw err;}
 }
+
 class Persona {
     constructor(nom){
         this.nom=nom;
